@@ -1,0 +1,48 @@
+/* Eddie Simulator — warm bean-room visual theme. No external fonts. */
+:root {
+  color-scheme: light;
+  --cream: #fff8e9; --paper: #fffdf6; --ink: #35432d;
+  --muted: #70785f; --green: #80a64e; --line: #dce2c8;
+  --peach: #f3c5a7; --shadow: 0 8px 24px #43512c12;
+  font-family: ui-rounded, 'SF Pro Rounded', 'Trebuchet MS', system-ui, sans-serif;
+  background: var(--cream); color: var(--ink);
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100svh; padding: clamp(12px, 3vw, 28px); background: radial-gradient(ellipse at 50% 0%, #edf1d9, transparent 65%), var(--cream); transition: background .4s, color .4s; }
+main, .app, #app { width: min(100%, 760px); margin-inline: auto; }
+h1 { margin: 12px 0 4px; font-size: clamp(1.8rem, 5vw, 2.8rem); letter-spacing: -.04em; }
+h2, p { line-height: 1.5; }
+#age { color: var(--muted); font-size: .85rem; font-weight: 600; }
+#stage { position: relative; width: 100%; min-height: 280px; height: clamp(280px, 52svh, 500px); overflow: hidden; margin-block: 20px; border: 1px solid var(--line); border-radius: 32px; background: #f0e6d2; box-shadow: var(--shadow); isolation: isolate; }
+#stage canvas { display: block; width: 100%; height: 100%; touch-action: none; }
+#speech { position: absolute; z-index: 2; top: 16px; left: 50%; transform: translateX(-50%); max-width: calc(100% - 32px); width: max-content; margin: 0; padding: 10px 18px; border-radius: 20px; color: var(--ink); background: #fffdf6f2; box-shadow: 0 3px 12px #35432d12; text-align: center; font-weight: 600; pointer-events: none; }
+#speech:empty { display: none; }
+#score { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--ink); background: var(--paper); padding: 6px 12px; border-radius: 12px; }
+.stats, #stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-block: 16px; }
+.stat { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); font-size: .85rem; font-weight: 700; }
+.stat .bar, .stat .track { height: 9px; margin-top: 9px; overflow: hidden; border-radius: 20px; background: #e9ecd9; }
+.stat .fill { height: 100%; min-height: 8px; max-width: 100%; border-radius: inherit; background: var(--green); transition: width .5s ease, background .3s; }
+.stat[data-stat=fun] .fill { background: #d9a34c; }
+.stat[data-stat=energy] .fill { background: #9992bf; }
+.stat[data-stat=clean] .fill { background: #74ada9; }
+.stat.low { border-color: #bd794e; }
+.stat.low .fill { background: #bd794e; }
+.actions, #actions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin-block: 16px; }
+button { font: inherit; }
+button[data-action] { min-height: 52px; padding: 12px 16px; border: 1px solid #cdd7b7; border-radius: 18px; background: #edf2df; color: #35432d; font-weight: 700; cursor: pointer; box-shadow: 0 3px 0 #d1dabb; transition: transform .15s, background .15s; -webkit-tap-highlight-color: transparent; }
+button[data-action=feed] { background: #f7e5bf; border-color: #e5cca1; box-shadow: 0 3px 0 #e5cca1; }
+button[data-action=bath] { background: #dfefec; border-color: #bdd6d0; box-shadow: 0 3px 0 #bdd6d0; }
+button[data-action=sleep] { background: #e9e3f4; border-color: #d0c6e0; box-shadow: 0 3px 0 #d0c6e0; }
+button[data-action]:active:not(:disabled) { transform: translateY(2px); box-shadow: none; }
+button:focus-visible, a:focus-visible { outline: 3px solid #486b31; outline-offset: 4px; }
+button:disabled { opacity: .55; cursor: default; box-shadow: none; }
+body.asleep { --cream: #20283b; --paper: #303950; --ink: #f2eedf; --muted: #c3c9d5; --line: #49536b; background: #20283b; }
+body.asleep #stage { background: #29324b; }
+body.asleep #speech { background: #303950f2; }
+body.asleep .stat .bar, body.asleep .stat .track { background: #46516a; }
+@media (hover: hover) { button[data-action]:hover:not(:disabled) { filter: brightness(1.04); transform: translateY(-1px); } }
+@media (max-width: 480px) { .stats, #stats, .actions, #actions { grid-template-columns: repeat(2, minmax(0, 1fr)); } #stage { border-radius: 24px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
+/* Integration (Claude): score badge sits over the 3D view. */
+#score { position: absolute; z-index: 2; top: 16px; right: 16px; }

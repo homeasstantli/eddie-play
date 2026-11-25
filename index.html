@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Eddie Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <main id="app">
+    <header class="top">
+      <h1 id="title">Eddie</h1>
+      <span id="age" class="age">Day 1</span>
+    </header>
+
+    <section class="stats" id="stats">
+      <div class="stat" data-stat="hunger"><span class="label">Tummy</span><div class="bar"><div class="fill"></div></div></div>
+      <div class="stat" data-stat="fun"><span class="label">Fun</span><div class="bar"><div class="fill"></div></div></div>
+      <div class="stat" data-stat="energy"><span class="label">Energy</span><div class="bar"><div class="fill"></div></div></div>
+      <div class="stat" data-stat="clean"><span class="label">Clean</span><div class="bar"><div class="fill"></div></div></div>
+    </section>
+
+    <div id="stage">
+      <canvas aria-label="Eddie the edamame"></canvas>
+      <div id="speech" class="speech" hidden></div>
+      <div id="score" class="score" hidden></div>
+    </div>
+
+    <nav class="actions">
+      <button data-action="feed">Feed</button>
+      <button data-action="play">Play</button>
+      <button data-action="bath">Bath</button>
+      <button data-action="sleep">Sleep</button>
+    </nav>
+    <p class="hint">Rub Eddie to pet. In Play, tap anywhere to keep the ball up.</p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
